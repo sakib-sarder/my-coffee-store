@@ -1,8 +1,9 @@
 import React from "react";
 import { AiOutlineEye, AiOutlineEdit, AiFillDelete } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const CoffeeCard = ({ coffee, coffees , setCoffees }) => {
+const CoffeeCard = ({ coffee, coffees, setCoffees }) => {
   const { _id, name, quantity, supplier, taste, category, details, photo } =
     coffee;
   const handleDelete = (id) => {
@@ -47,9 +48,11 @@ const CoffeeCard = ({ coffee, coffees , setCoffees }) => {
             <button className=" border py-1 rounded-lg bg-[#D2B48C]">
               <AiOutlineEye className="text-2xl mx-auto text-white"></AiOutlineEye>
             </button>
-            <button className=" border py-1 rounded-lg bg-[#3C393B]">
-              <AiOutlineEdit className="text-2xl mx-auto text-white"></AiOutlineEdit>
-            </button>
+            <Link className="bg-[#3c393b] rounded-lg" to={`/update-coffee/${_id}`}>
+              <div className="py-1">
+                <AiOutlineEdit className="text-2xl mx-auto text-white"></AiOutlineEdit>
+              </div>
+            </Link>
             <button
               onClick={() => handleDelete(_id)}
               className=" border py-1 px-2 rounded-lg bg-[#EA4744]"
